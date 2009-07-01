@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name    = "bob-test"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
   s.date    = "2009-06-01"
 
-  s.summary     = "test helpers for bob etc"
-  s.description = "test helpers for bob etc"
+  s.summary     = "test helpers shared among Bob, Bobette and Integrity"
+  s.description = s.summary
 
   s.homepage    = "http://integrityapp.com"
 
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.has_rdoc          = false
   s.rubygems_version  = "1.3.1"
 
-  s.add_dependency "bob-the-builder"
+  s.add_dependency "bob"
   s.add_dependency "hpricot" # TODO: drop
 
   s.files = %w[
