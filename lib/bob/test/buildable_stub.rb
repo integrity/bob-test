@@ -1,23 +1,22 @@
 module Bob::Test
-  BuildableStub = Struct.new(:kind, :uri, :branch, :build_script) do
+  BuildableStub = Struct.new(:scm, :uri, :branch, :build_script) do
     include Bob::Buildable
 
     attr_reader :repo, :builds, :metadata
 
     def self.from(repo)
-      kind = repo.class == Bob::Test::GitRepo ? :git : :svn
-      # same
+      scm = (Bob::Test::GitRepo === repo) ? :git : :svn
       uri =
-        if kind == :git
+        if scm == :git
           repo.path
         else
           "file://#{SvnRepo.server_root}/#{repo.name}"
         end
       # move to repo
-      branch = (kind == :git) ? "master" : ""
+      branch = (scm == :git) ? "master" : ""
       build_script = "./test"
 
-      new(kind, uri, branch, build_script)
+      new(scm, uri, branch, build_script)
     end
 
     def initialize(*args)

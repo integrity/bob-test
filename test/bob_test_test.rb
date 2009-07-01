@@ -26,7 +26,7 @@ class BobTestTest < Test::Unit::TestCase
   def test_buildable_stub
     b = BuildableStub.new(:git, "git://github.com/ry/node", "master", "make")
 
-    assert_equal :git,                       b.kind
+    assert_equal :git,                       b.scm
     assert_equal "git://github.com/ry/node", b.uri
     assert_equal "master",                   b.branch
     assert_equal "make",                     b.build_script
@@ -45,7 +45,7 @@ class BobTestTest < Test::Unit::TestCase
     repo.create
 
     b = BuildableStub.from(repo)
-    assert_equal :git,                     b.kind
+    assert_equal :git,                     b.scm
     assert_equal "/tmp/bob-git/test_repo", b.uri
     assert_equal "master",                 b.branch
     assert_equal "./test",                 b.build_script
@@ -59,7 +59,7 @@ class BobTestTest < Test::Unit::TestCase
     repo.create
 
     b = BuildableStub.from(repo)
-    assert_equal :svn,      b.kind
+    assert_equal :svn,      b.scm
     assert_equal "",        b.branch
     assert_equal "./test",  b.build_script
     assert_equal "file:///tmp/bob-svn/svn/test_repo", b.uri
