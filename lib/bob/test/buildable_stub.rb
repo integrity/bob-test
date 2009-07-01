@@ -4,7 +4,7 @@ module Bob::Test
 
     attr_reader :repo, :builds, :metadata
 
-    def self.from(repo)
+    def self.call(repo)
       scm = (Bob::Test::GitRepo === repo) ? :git : :svn
       uri =
         if scm == :git

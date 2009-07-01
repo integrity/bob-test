@@ -44,7 +44,7 @@ class BobTestTest < Test::Unit::TestCase
     repo.destroy
     repo.create
 
-    b = BuildableStub.from(repo)
+    b = BuildableStub.call(repo)
     assert_equal :git,                     b.scm
     assert_equal "/tmp/bob-git/test_repo", b.uri
     assert_equal "master",                 b.branch
@@ -58,7 +58,7 @@ class BobTestTest < Test::Unit::TestCase
     repo.destroy
     repo.create
 
-    b = BuildableStub.from(repo)
+    b = BuildableStub.call(repo)
     assert_equal :svn,      b.scm
     assert_equal "",        b.branch
     assert_equal "./test",  b.build_script
