@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name    = "bob-test"
   s.version = "0.0.2"
-  s.date    = "2009-06-01"
+  s.date    = "2009-07-01"
 
   s.summary     = "test helpers shared among Bob, Bobette and Integrity"
   s.description = s.summary
